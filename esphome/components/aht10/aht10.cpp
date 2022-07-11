@@ -42,12 +42,12 @@ void AHT10Component::setup() {
   }
   delay(AHT10_DEFAULT_DELAY);
   if (this->read(&data, 1) != i2c::ERROR_OK) {
-    ESP_LOGD(TAG, "Communication with AHT10 failed!");
+    ESP_LOGD(TAG, "Communication with AHT10 failedrr!");
     this->mark_failed();
     return;
   }
   if (this->read(&data, 1) != i2c::ERROR_OK) {
-    ESP_LOGD(TAG, "Communication with AHT10 failed!");
+    ESP_LOGD(TAG, "Communication with AHT10 failedrr!");
     this->mark_failed();
     return;
   }
@@ -75,7 +75,7 @@ void AHT10Component::update() {
     ESP_LOGVV(TAG, "Attempt %d at %6u", i, millis());
     delay(delay_ms);
     if (this->read(data, 6) != i2c::ERROR_OK) {
-      ESP_LOGD(TAG, "Communication with AHT10 failed, waiting...");
+      ESP_LOGD(TAG, "Communication with AHT10 failed, waitingrr...");
       continue;
     }
 
@@ -87,7 +87,7 @@ void AHT10Component::update() {
         ESP_LOGVV(TAG, "ATH10 Unrealistic humidity (0x0), but humidity is not required");
         break;
       } else {
-        ESP_LOGD(TAG, "ATH10 Unrealistic humidity (0x0), retrying...");
+        ESP_LOGD(TAG, "ATH10 Unrealistic humidity (0x0)rr, retrying...");
         if (!this->write_bytes(0, AHT10_MEASURE_CMD, sizeof(AHT10_MEASURE_CMD))) {
           ESP_LOGE(TAG, "Communication with AHT10 failed!");
           this->status_set_warning();
